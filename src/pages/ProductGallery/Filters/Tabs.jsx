@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonOutline } from '../../components/common/Button';
+import { ButtonOutline } from '../../../components/common/Button';
 
 const CATEGORY = ['All', 'Women', 'Men', 'Jewelry', 'Electronics'];
 

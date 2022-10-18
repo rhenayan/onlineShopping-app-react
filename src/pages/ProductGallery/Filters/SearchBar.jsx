@@ -1,8 +1,7 @@
 import React from 'react';
 import { BsSearch } from 'react-icons/bs';
 import styled from 'styled-components';
-import useToggle from '../../hooks/useToggle';
-
+import useToggle from '../../../hooks/useToggle'
 
 const SearchBar = () => {
 
