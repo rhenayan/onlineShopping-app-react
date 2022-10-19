@@ -30,10 +30,10 @@ const SearchWrapperStyled = styled.div`
   align-items: center;
   
   cursor:pointer;
-  width: 50%;
+  width: 68%;
 
-  @media (max-width: 469px) {
-    width: 90%;
+  @media (min-width: 469px) {
+    width: 50%;
   }
 `
 const IconWrapperStyled = styled.span`
