@@ -1,6 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import {Button, ButtonGroup, ButtonOutline} from '../../components/common/Button';
+import {
+  ButtonGroup,
+  ButtonPrimary,
+  ButtonSecondary,
+} from '../../components/common/Button';
 
 const Description = () => {
   return (
@@ -14,8 +19,10 @@ const Description = () => {
         rerum magnam.
       </DescriptionStyled>
       <ButtonGroup width={'230px'}>
-        <Button>Add To Cart</Button>
-        <ButtonOutline>Continue Shopping</ButtonOutline>
+        <ButtonPrimary>Add To Cart</ButtonPrimary>
+        <Link to='/products'>
+          <ButtonSecondary>Continue Shopping</ButtonSecondary>
+        </Link>
       </ButtonGroup>
     </TextWrapperStyled>
   );
@@ -31,7 +38,7 @@ const TextWrapperStyled = styled.section`
 const CategoryStyled = styled.h5``;
 
 const ProductNameStyled = styled.h1`
-margin: unset;
+  margin: unset;
 `;
 
 const PriceStyled = styled.h3``;

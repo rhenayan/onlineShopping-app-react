@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ButtonSecondary } from '../../components/common/Button';
 import Product from '../../components/common/Product';
 import SectionTitle from '../../components/common/SectionTitle';
 
@@ -7,16 +9,15 @@ const ShopOverview = ({ title, subtitle }) => {
   return (
     <SectionStyled>
       <SectionTitle title={title} subtitle={subtitle} />
-
-
       <CardsContainerStyled>
-        <Product/>
-        <Product/>
-        <Product/>
-
-
+        <Product />
+        <Product />
+        <Product />
       </CardsContainerStyled>
 
+      <Link to='/products'>
+        <ButtonSecondary>Shop Now</ButtonSecondary>
+      </Link>
     </SectionStyled>
   );
 };
@@ -31,7 +32,6 @@ const SectionStyled = styled.section`
   grid-template-rows: repeat(2, auto);
   justify-items: center;
   padding-block: 4em;
-
 `;
 
 const CardsContainerStyled = styled.div`
@@ -39,8 +39,7 @@ const CardsContainerStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 1.2em;
-  margin-top: 2.3em;
-
+  margin-block: 2.3em;
 `;
 
 // const ProductWrapperStyled = styled.div`

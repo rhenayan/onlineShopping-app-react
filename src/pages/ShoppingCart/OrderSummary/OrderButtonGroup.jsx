@@ -1,16 +1,22 @@
-import React from 'react'
-import {Button, ButtonGroup, ButtonOutline} from '../../../components/common/Button'
-import styled from 'styled-components'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  ButtonGroup,
+  ButtonPrimary,
+  ButtonSecondary,
+} from '../../../components/common/Button';
 
 const OrderButtonGroup = () => {
   return (
     <ButtonGroup>
-      <Button>Checkout</Button>
-      <ButtonOutline>Continue Shopping</ButtonOutline>
+      <Link to='/'>
+        <ButtonPrimary>Checkout</ButtonPrimary>
+      </Link>
+      <Link to='/products'>
+        <ButtonSecondary>Continue Shopping</ButtonSecondary>
+      </Link>
     </ButtonGroup>
-  )
-}
+  );
+};
 
-
-
-export default OrderButtonGroup
+export default OrderButtonGroup;
