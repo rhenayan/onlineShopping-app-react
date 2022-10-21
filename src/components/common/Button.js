@@ -2,12 +2,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Button = ({ children }) => (
-  <ButtonStyled>{children}</ButtonStyled>
+const ButtonPrimary = ({ children }) => (
+  <ButtonPrimaryStyled>{children}</ButtonPrimaryStyled>
 );
 
-const ButtonOutline = ({ children}) => (
-  <ButtonOutlineStyled >{children}</ButtonOutlineStyled>
+const ButtonSecondary = ({ children}) => (
+  <ButtonSecondaryStyled >{children}</ButtonSecondaryStyled>
 );
 
 const ButtonGroup = ({ children, width}) => (
@@ -17,7 +17,7 @@ const ButtonGroup = ({ children, width}) => (
 );
 
 
-const ButtonStyled = styled.button`
+const ButtonPrimaryStyled = styled.button`
   color: white;
   border: 1px solid black;
   background: black;
@@ -25,6 +25,7 @@ const ButtonStyled = styled.button`
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+ 
 
   display: flex;
   justify-content: center;
@@ -43,7 +44,7 @@ const ButtonStyled = styled.button`
   }
 `;
 
-const ButtonOutlineStyled = styled(ButtonStyled)`
+const ButtonSecondaryStyled = styled(ButtonPrimaryStyled)`
   color: black;
   border: 1px solid black;
   background: transparent;
@@ -63,4 +64,4 @@ const ButtonGroupStyled = styled.div`
   width: ${props => props.width };
 `;
 
-export { Button, ButtonOutline, ButtonGroup };
+export { ButtonPrimary, ButtonSecondary, ButtonGroup };

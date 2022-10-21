@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonOutline } from '../../../components/common/Button';
+import { ButtonSecondary } from '../../../components/common/Button';
 import dummyimage from '../../../DUMMY_IMAGE.jpg'
 
 const ItemDetail = () => {
@@ -10,7 +10,7 @@ const ItemDetail = () => {
       <ItemDetailsStyled>
         <NameStyled>Jacket</NameStyled>
         <PriceStyled>$299.50</PriceStyled>
-        <ButtonOutline> remove </ButtonOutline>
+        <ButtonSecondary> remove </ButtonSecondary>
       </ItemDetailsStyled>
     </WrapperStyled>
   );

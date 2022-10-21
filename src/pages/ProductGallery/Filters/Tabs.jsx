@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonOutline } from '../../../components/common/Button';
+import { ButtonSecondary } from '../../../components/common/Button';
 import Dropdown from './Dropdown';
 
 const categories = ['All', 'Women', 'Men', 'Jewelry', 'Electronics'];
@@ -11,7 +11,7 @@ const Tabs = () => {
       <Dropdown categories={[...categories]}/>
       <CategoryWrapperStyled>
         {categories.map((cat, index) => (
-          <ButtonOutline key={index}>{cat}</ButtonOutline>
+          <ButtonSecondary key={index}>{cat}</ButtonSecondary>
         ))}
       </CategoryWrapperStyled>
     </TabbledFilterWrapperStyled>
