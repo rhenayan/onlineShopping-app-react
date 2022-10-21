@@ -19,10 +19,7 @@ const FiltersWrapperStyled = styled.div`
   align-items: center;
   margin-top: 1em;
 
-  @media (max-width: 468px) {
-    margin-top: 1.8em;
-    align-items: flex-start;
-  }
+  padding-inline:.8em;
 `;
 
 export default Filters;
