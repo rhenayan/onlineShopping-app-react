@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import ImageStyled from '../../styles/Image.style';
 import dummyimage from '../../DUMMY_IMAGE.jpg';
 
 const Image = () => {
   return (
     <ImageWrapperStyled>
-      <ImageStyled src={dummyimage} />
+      <ImageNewStyled src={dummyimage} />
     </ImageWrapperStyled>
   );
 };
@@ -13,12 +14,8 @@ const Image = () => {
 const ImageWrapperStyled = styled.section`
   grid-area: image;
 `;
-const ImageStyled = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+const ImageNewStyled = styled(ImageStyled)`
     transform:scale(.8);
-    mix-blend-mode: multiply;
 `;
 
 export default Image;
