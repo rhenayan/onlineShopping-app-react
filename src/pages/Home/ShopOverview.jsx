@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ButtonSecondary } from '../../components/common/Button';
+import { ButtonStyled } from '../../styles/Button.style';
 import Product from '../../components/common/Product';
 import SectionTitle from '../../components/common/SectionTitle';
 
@@ -16,7 +16,9 @@ const ShopOverview = ({ title, subtitle }) => {
       </CardsContainerStyled>
 
       <Link to='/products'>
-        <ButtonSecondary>Shop Now</ButtonSecondary>
+        <ButtonStyled outline large>
+          Shop Now
+        </ButtonStyled>
       </Link>
     </SectionStyled>
   );
@@ -41,11 +43,5 @@ const CardsContainerStyled = styled.div`
   grid-gap: 1.2em;
   margin-block: 2.3em;
 `;
-
-// const ProductWrapperStyled = styled.div`
-//   width: 337px;
-//   margin-bottom: 4em;
-//   cursor: pointer;
-// `;
 
 export default ShopOverview;

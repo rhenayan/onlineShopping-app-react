@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonSecondary } from '../../../components/common/Button';
-import dummyimage from '../../../DUMMY_IMAGE.jpg'
+import { ButtonStyled } from '../../../styles/Button.style';
+import dummyimage from '../../../DUMMY_IMAGE.jpg';
+import ImageStyled from '../../../styles/Image.style';
 
 const ItemDetail = () => {
   return (
@@ -10,36 +11,34 @@ const ItemDetail = () => {
       <ItemDetailsStyled>
         <NameStyled>Jacket</NameStyled>
         <PriceStyled>$299.50</PriceStyled>
-        <ButtonSecondary> remove </ButtonSecondary>
+        <ButtonStyled outline> remove </ButtonStyled>
       </ItemDetailsStyled>
     </WrapperStyled>
   );
 };
-
-
 
 const WrapperStyled = styled.div`
   display: flex;
   gap: 3em;
 `;
 
-const ItemImageStyled = styled.img`
-  width: 110px;
-  height: 100%;
+const ItemImageStyled = styled(ImageStyled)`
+  max-width: 110px;
 `;
 
 const ItemDetailsStyled = styled.div`
   * {
     margin-bottom: 0.5em;
   }
-  align-self:center;
+  align-self: center;
 `;
 
-const NameStyled = styled.h5``;
+const NameStyled = styled.h5(
+  ({theme}) => `font-weight: ${theme.regular}`
+);
 
-const PriceStyled = styled.h3`
-  
-`;
-
+const PriceStyled = styled.h3(
+  ({theme}) => `font-weight: ${theme.semiBold}`
+);;
 
 export default ItemDetail;

@@ -23,10 +23,11 @@ const OrderTotal = () => {
     <>
       {ORDER_SUMMARY_DETAILS.map((detail, i) => {
         const isOrderTotal = detail.label === 'Order Total';
+        const isFree = detail.desc === 'FREE';
         return (
-          <TextWrapperStyled key={i}>
+          <TextWrapperStyled orderTotal={isOrderTotal} key={i}>
             <LabelStyled orderTotal={isOrderTotal}>{detail.label}</LabelStyled>
-            <DescStyled orderTotal={isOrderTotal}>
+            <DescStyled orderTotal={isOrderTotal} free={isFree}>
               {typeof detail.desc === 'number' && '$'}
               {detail.desc}
             </DescStyled>
@@ -43,22 +44,25 @@ const TextWrapperStyled = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: ${({ orderTotal }) => orderTotal && '1.3em'};
 
   > * {
-    margin-block: .5em;
+    margin-block: 0.5em;
   }
-  
 `;
 
-const LabelStyled = styled.h4`
-  font-size: ${props => props.orderTotal && '1.2em'};
-  font-weight: ${props => props.orderTotal && '800'};
+const LabelStyled = styled.h4(
+  ({ orderTotal, theme }) => `
+ 
+  font-weight: ${orderTotal ? theme.bold : theme.regular} 
+  `
+);
 
-`;
+const DescStyled = styled.h5(
+  ({ orderTotal, free, theme }) => `
+  font-weight: ${orderTotal ? theme.bold : theme.regular};
+  color: ${free && theme.text.accent}
+  `
+);
 
-const DescStyled = styled.p`
-  font-weight: ${props => (props.orderTotal ? '800' : '400')};
-  font-size: ${props => props.orderTotal && '1.2em'};
-
-`;
 export default OrderTotal;

@@ -12,11 +12,13 @@ const ItemTotalPrice = () => {
 
 const WrapperStyled = styled.div``;
 
-const TotalPriceTitleStyled = styled.h6`
-  margin-bottom: 1.5em;
-`;
+const TotalPriceTitleStyled = styled.h6(
+  ({theme}) => `
+  font-weight: ${theme.semiBold};
+  margin-bottom: 1.5em`
+);
 
-const TotalAmountStyled = styled.h3`
-  font-weight: 800;
-`;
+const TotalAmountStyled = styled.h3(
+  ({theme}) => `font-weight: ${theme.bold}`
+)
 export default ItemTotalPrice;

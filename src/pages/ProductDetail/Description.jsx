@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {
   ButtonGroup,
-  ButtonPrimary,
-  ButtonSecondary,
-} from '../../components/common/Button';
+  ButtonStyled,
+
+} from '../../styles/Button.style';
 
 const Description = () => {
   return (
@@ -19,9 +19,9 @@ const Description = () => {
         rerum magnam.
       </DescriptionStyled>
       <ButtonGroup width={'230px'}>
-        <ButtonPrimary>Add To Cart</ButtonPrimary>
+        <ButtonStyled>Add To Cart</ButtonStyled>
         <Link to='/products'>
-          <ButtonSecondary>Continue Shopping</ButtonSecondary>
+          <ButtonStyled outline >Continue Shopping</ButtonStyled>
         </Link>
       </ButtonGroup>
     </TextWrapperStyled>
@@ -32,16 +32,26 @@ const TextWrapperStyled = styled.section`
   grid-area: desc;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: .8em;
 `;
 
-const CategoryStyled = styled.h5``;
+const CategoryStyled = styled.small``;
 
-const ProductNameStyled = styled.h1`
-  margin: unset;
-`;
+const ProductNameStyled = styled.h3(
+  ({theme}) => `
+    font-weight: ${theme.regular};
+  `
+);
 
-const PriceStyled = styled.h3``;
-const DescriptionStyled = styled.p``;
+const PriceStyled = styled.h2(
+  ({theme}) => `
+    font-weight: ${theme.bold};
+  `
+);
+const DescriptionStyled = styled.p(
+  ({theme}) => `
+    font-weight: ${theme.light};
+  `
+);;
 
 export default Description;

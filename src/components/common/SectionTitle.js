@@ -13,18 +13,25 @@ const SectionTitle = ({ title, subtitle }) => {
 
 
 const TitleWrapperStyled = styled.div`
-
     text-align: center;
+    line-height: 1.8;
 `
-const TitleStyled = styled.h2`
+const TitleStyled = styled.h2(
+  ({ theme }) => `
+  font-weight: ${theme.bold};
+  color: ${theme.text.accent};
+  letter-spacing: .8px;
+`
+)
 
-  
-  margin: unset;
-`;
 
-const SubtitleStyled = styled.h4`
-  
-  margin:unset;
-`;
+
+
+const SubtitleStyled = styled.h4(
+  ({ theme }) => `
+  font-weight: ${theme.regular}
+`
+)
+
 
 export default SectionTitle;

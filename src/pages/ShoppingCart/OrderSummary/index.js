@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { ThemeConsumer } from 'styled-components';
 import PaymentMethod from './PaymentMethods'
 import OrderButtonGroup from './OrderButtonGroup'
 import OrderTotal from './OrderTotal'
@@ -23,7 +23,9 @@ const WrapperStyled = styled.article`
 `;
 
 const HeadingStyled = styled.h3`
+font-weight: ${({theme}) => theme.bold};
 padding-block: 1em;
+letter-spacing: .8px;
 
 `;
 

@@ -28,8 +28,6 @@ const SearchWrapperStyled = styled.div`
   display:flex;
   justify-content: flex-end;
   align-items: center;
-  
-  cursor:pointer;
   width: 68%;
 
   @media (min-width: 469px) {
@@ -37,7 +35,7 @@ const SearchWrapperStyled = styled.div`
   }
 `
 const IconWrapperStyled = styled.span`
-  
+  cursor:pointer;
 `;
 
 
@@ -45,19 +43,23 @@ const InputStyled = styled.input`
   height: 25px;
   width:${props => props.isInputExtended ? '100%' : '0px'};
   font-size: 1em;
-  font-weight: 100;
   background:transparent;
   display: inline-block;
   border-width: 0;
-  border-bottom: ${props => props.isInputExtended ? '1px inset gray' : null};
+  border-bottom: ${props => props.isInputExtended ? '1px inset' : null};
   outline: none;
-  color: #555;
   padding: 3px;
   transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+
+  ${({theme}) => `
+     font-weight: ${theme.regular};
+     border-bottom-color: ${theme.border};
+     color: ${theme.text.dark };
+  `}
   
   @media (max-width: 468px) {
     width: 100%;
-    border-bottom: 1px inset gray;
+    border-bottom: 1px inset ${({theme}) => theme.border};
   }
 `
 export default SearchBar;

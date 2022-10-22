@@ -5,26 +5,45 @@ const Dropdown = ({ categories }) => {
   const [all, women, men, jewelry, electronics] = categories;
   return (
     <SelectStyled>
-      <option value='All'>{all}</option>
-      <option value='Women'>{women}</option>
-      <option value='Men'>{men}</option>
-      <option value='hamster'>{jewelry}</option>
-      <option value='parrot'>{electronics}</option>
+      <OptionStyled value='All'>{all}</OptionStyled>
+      <OptionStyled value='Women'>{women}</OptionStyled>
+      <OptionStyled value='Men'>{men}</OptionStyled>
+      <OptionStyled value='hamster'>{jewelry}</OptionStyled>
+      <OptionStyled value='parrot'>{electronics}</OptionStyled>
     </SelectStyled>
   );
 };
 
-const SelectStyled = styled.select`
 
-  width:100%;
-  outline: 0;
+
+const SelectStyled = styled.select`
+  ${({theme}) => `
+    border: 2px solid ${theme.border};
+    color: ${theme.text.dark};
+    background: ${theme.bg.body};
+  
+  `}
+  width: 100%;
+  outline:none;
   box-shadow: none;
-  background: white;
-  border: 1px solid black;
+
   padding: 0.2em;
+ 
+
   @media (min-width: 469px) {
     display: none;
   }
 `;
+
+
+const OptionStyled = styled.option(
+  ({theme}) => `
+    
+  background-color: ${theme.bg.button};
+  color: ${theme.text.light};
+
+  `
+)
+
 
 export default Dropdown;

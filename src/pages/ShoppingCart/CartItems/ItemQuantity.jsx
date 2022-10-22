@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ButtonStyled } from '../../../styles/Button.style';
 
 const ItemQuantity = () => {
   return (
     <WrapperStyled>
       <QtyTitle>Quantity</QtyTitle>
       <div>
-        <BtnCounter>-</BtnCounter>
+        <ButtonStyled outline>-</ButtonStyled>
         <QuantityCountStyled>0</QuantityCountStyled>
-        <BtnCounter>+</BtnCounter>
+        <ButtonStyled outline>+</ButtonStyled>
       </div>
     </WrapperStyled>
   );
@@ -16,17 +17,13 @@ const ItemQuantity = () => {
 
 const WrapperStyled = styled.div``;
 
-const QtyTitle = styled.h6`
+const QtyTitle = styled.h6(
+  ({ theme }) => `
+  font-weight: ${theme.semiBold}; 
   margin-bottom: 1.5em;
-`;
+  `
+);
 
-const BtnCounter = styled.button`
-  padding: 0.2em 0.5em;
-  border-radius: 0;
-  border: 1px solid gray;
-  background: white;
-  cursor: pointer;
-`;
 
 const QuantityCountStyled = styled.span`
   margin-inline: 0.5em;

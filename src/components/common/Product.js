@@ -1,25 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import dummyimage from '../../DUMMY_IMAGE.jpg';
-import { ButtonPrimary } from './Button';
+import { ButtonStyled } from '../../styles/Button.style';
+import ImageStyled from '../../styles/Image.style';
 
 const Product = () => {
   return (
     <ProductWrapperStyled>
-      <FigureStyled>
-        <ImageStyled src={dummyimage} />
-      </FigureStyled>
-
-      <ProductInfoWrapperStyled>
-        <CategoryStyled>Women's Clothing</CategoryStyled>
-        <NameStyled>Jacket</NameStyled>
-        <ProductFooterStyled>
-          <PriceStyled>$230.99</PriceStyled>
-          <ButtonPrimary>Add to Cart</ButtonPrimary>
-        </ProductFooterStyled>
-      </ProductInfoWrapperStyled>
+        <FigureStyled>
+          <ImageStyled src={dummyimage} />
+        </FigureStyled>
+        <ProductInfoWrapperStyled>
+          <CategoryStyled>Women's Clothing</CategoryStyled>
+          <NameStyled>Jacket</NameStyled>
+          <ProductFooterStyled>
+            <PriceStyled>$230.99</PriceStyled>
+            <ButtonStyled>Buy</ButtonStyled>
+          </ProductFooterStyled>
+        </ProductInfoWrapperStyled>
     </ProductWrapperStyled>
-  );
+  )
 };
 
 const ProductWrapperStyled = styled.div``;
@@ -29,13 +29,6 @@ const FigureStyled = styled.figure`
   text-align: center;
 `;
 
-const ImageStyled = styled.img`
-  max-width: 100%;
-  height: 100%;
-  object-fit: cover;
-  mix-blend-mode: multiply;
-`;
-
 const ProductInfoWrapperStyled = styled.div`
   padding: 1.2em 0.5em;
 `;
@@ -43,6 +36,7 @@ const ProductInfoWrapperStyled = styled.div`
 const CategoryStyled = styled.small``;
 
 const NameStyled = styled.h4`
+  font-weight: ${({ theme }) => theme.semiBold};
 `;
 
 const ProductFooterStyled = styled.div`
@@ -50,11 +44,10 @@ const ProductFooterStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-block: 0.5em;
-  border-top: 2px solid black;
+  border-top: 2px solid ${({ theme }) => theme.border};
   margin-top: 0.5em;
 `;
 
-const PriceStyled = styled.h3`
-`;
+const PriceStyled = styled.h3``;
 
 export default Product;
