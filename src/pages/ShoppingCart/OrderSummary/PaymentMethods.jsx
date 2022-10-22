@@ -21,7 +21,7 @@ const WrapperStyled = styled.div`
 `;
 
 const PaymentIcon = styled.img`
-background: white;
+background: transparent;
 padding-inline: .2em;
 border-radius: 4px;
 `

@@ -18,7 +18,6 @@ const FiltersWrapperStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 1em;
-
   padding-inline:.8em;
 `;
 
