@@ -1,20 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import dummyimage from '../../DUMMY_IMAGE.jpg';
 import { ButtonStyled } from '../../styles/Button.style';
 import ImageStyled from '../../styles/Image.style';
 
-const Product = () => {
+
+const Product = ({products}) => {
+
+  console.log(products)
+  const {image, category, title, price, } = products;
   return (
     <ProductWrapperStyled>
         <FigureStyled>
-          <ImageStyled src={dummyimage} />
+          <ImageStyled src={image} />
         </FigureStyled>
         <ProductInfoWrapperStyled>
-          <CategoryStyled>Women's Clothing</CategoryStyled>
-          <NameStyled>Jacket</NameStyled>
+          <CategoryStyled>{category}</CategoryStyled>
+          <NameStyled>{title}</NameStyled>
           <ProductFooterStyled>
-            <PriceStyled>$230.99</PriceStyled>
+            <PriceStyled>${price}</PriceStyled>
             <ButtonStyled>Buy</ButtonStyled>
           </ProductFooterStyled>
         </ProductInfoWrapperStyled>
@@ -33,10 +36,13 @@ const ProductInfoWrapperStyled = styled.div`
   padding: 1.2em 0.5em;
 `;
 
-const CategoryStyled = styled.small``;
+const CategoryStyled = styled.small`
+  text-transform: uppercase;
+`;
 
 const NameStyled = styled.h4`
   font-weight: ${({ theme }) => theme.semiBold};
+  margin-top: .5em;
 `;
 
 const ProductFooterStyled = styled.div`
