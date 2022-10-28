@@ -1,35 +1,38 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-const ORDER_SUMMARY_DETAILS = [
-  {
-    label: 'Subtotal',
-    desc: 1700.87,
-  },
-
-  {
-    label: 'Shipping',
-    desc: 'FREE',
-  },
-
-  {
-    label: 'Order Total',
-    desc: 5700.87,
-  },
-];
-
 const OrderTotal = () => {
+  const {cartTotalAmount} = useSelector(state => state.cart);
+
+  const ORDER_SUMMARY_DETAILS = [
+    {
+      label: 'Subtotal',
+      desc: cartTotalAmount,
+    },
+
+    {
+      label: 'Shipping',
+      desc: 'FREE',
+    },
+
+    {
+      label: 'Total',
+      desc: cartTotalAmount,
+    },
+  ];
+
   return (
     <>
       {ORDER_SUMMARY_DETAILS.map((detail, i) => {
-        const isOrderTotal = detail.label === 'Order Total';
+        const isOrderTotal = detail.label === 'Total';
         const isFree = detail.desc === 'FREE';
         return (
           <TextWrapperStyled orderTotal={isOrderTotal} key={i}>
             <LabelStyled orderTotal={isOrderTotal}>{detail.label}</LabelStyled>
             <DescStyled orderTotal={isOrderTotal} free={isFree}>
-              {typeof detail.desc === 'number' && '$'}
-              {detail.desc}
+              {typeof detail.desc === 'number' && 'Php '}
+              {detail.desc.toLocaleString('en-US', {maximumFractionDigits:2})}
             </DescStyled>
           </TextWrapperStyled>
         );

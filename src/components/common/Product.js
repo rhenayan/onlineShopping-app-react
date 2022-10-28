@@ -1,28 +1,40 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { addToCart } from '../../features/cartSlice';
 import { ButtonStyled } from '../../styles/Button.style';
 import ImageStyled from '../../styles/Image.style';
 
+const Product = ({ products }) => {
+  const cartItems = useSelector(state => state.cart.cartItems);
+  const dispatch = useDispatch();
 
-const Product = ({products}) => {
+  const handleAddToCart = product => {
+    dispatch(addToCart(product));
+  };
 
-  console.log(products)
-  const {image, category, title, price, } = products;
+  const isInCartToggle = id => {
+    const isInCart = cartItems.some(item => item.id === id);
+    return isInCart;
+  };
+  const { image, category, title, price, id } = products;
   return (
     <ProductWrapperStyled>
-        <FigureStyled>
-          <ImageStyled src={image} />
-        </FigureStyled>
-        <ProductInfoWrapperStyled>
-          <CategoryStyled>{category}</CategoryStyled>
-          <NameStyled>{title}</NameStyled>
-          <ProductFooterStyled>
-            <PriceStyled>${price}</PriceStyled>
-            <ButtonStyled>Buy</ButtonStyled>
-          </ProductFooterStyled>
-        </ProductInfoWrapperStyled>
+      <FigureStyled>
+        <ImageStyled src={image} />
+      </FigureStyled>
+      <ProductInfoWrapperStyled>
+        <CategoryStyled>{category}</CategoryStyled>
+        <NameStyled>{title}</NameStyled>
+        <ProductFooterStyled>
+          <PriceStyled>${price}</PriceStyled>
+          <ButtonStyled disabled = {isInCartToggle(id)} onClick={() => handleAddToCart({image, price, title, id})}>
+            {isInCartToggle(id) ? 'In Cart' : 'Buy'}
+          </ButtonStyled>
+        </ProductFooterStyled>
+      </ProductInfoWrapperStyled>
     </ProductWrapperStyled>
-  )
+  );
 };
 
 const ProductWrapperStyled = styled.div``;
@@ -42,7 +54,7 @@ const CategoryStyled = styled.small`
 
 const NameStyled = styled.h4`
   font-weight: ${({ theme }) => theme.semiBold};
-  margin-top: .5em;
+  margin-top: 0.5em;
 `;
 
 const ProductFooterStyled = styled.div`

@@ -9,6 +9,10 @@ import { productsApi } from './features/apiSlice';
 import { store } from './features/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
+import { getTotals } from './features/cartSlice';
+
+//dispatch getTotal when the app loads
+store.dispatch(getTotals());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
