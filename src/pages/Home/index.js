@@ -1,17 +1,13 @@
 import React from 'react';
 
-import ShopOverview from './ShopOverview';
+import TopDeals from './TopDeals';
 
 const Home = () => {
   return (
     <>
-      <ShopOverview
+      <TopDeals
         title={'Top Deals'}
         subtitle={'Lorem ipsum dolor sit amet.'}
-      />
-      <ShopOverview
-        title={'New Arrivals'}
-        subtitle={'Dolor sit amet consectetur adipisicing elit.'}
       />
     </>
   );
