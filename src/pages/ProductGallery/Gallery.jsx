@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Product from '../../components/common/Product';
 import { useGetAllProductsQuery } from '../../features/apiSlice';
+import {
+  getFilteredProducts,
+  sortFilteredProducts,
+} from '../../features/filterSlice';
 
 const Gallery = () => {
-  const { data: allProducts } = useGetAllProductsQuery();
+  const { data: products } = useGetAllProductsQuery();
+  const { filteredProducts, activeCategory, sortSelectedValue } = useSelector(
+    state => state.filter
+  );
+  const dispatch = useDispatch();
 
-
+  useEffect(() => {
+    dispatch(getFilteredProducts(products));
+    dispatch(sortFilteredProducts(products));
+  }, [sortSelectedValue, activeCategory]);
 
   return (
     <GalleryWrapper>
-      {allProducts?.map(product => (
-          <Product key={product.id} products={{ ...product }} />
-        ))}
-
+     
+      {filteredProducts?.length > 0
+        ? filteredProducts?.map(product => (
+            <Product key={product.id} {...product} />
+          ))
+        : products?.map(product => <Product key={product.id} {...product} />)}
     </GalleryWrapper>
   );
 };

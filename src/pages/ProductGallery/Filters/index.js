@@ -1,19 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchBar from './SearchBar';
-
-import Tabs from './Tabs';
+import SortByPrice from './SortByPrice';
+import FilterByCategory from './FilterByCategory';
 
 const Filters = () => {
   return (
     <FiltersWrapperStyled>
-      <Tabs/>
-      <SearchBar />
+      <FilterByCategory/>
+      <SortByPrice/>
     </FiltersWrapperStyled>
   );
 };
 
-const FiltersWrapperStyled = styled.div`
+const FiltersWrapperStyled = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;

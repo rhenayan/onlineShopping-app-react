@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { productsApi } from './apiSlice';
-import cartReducer from '../features/cartSlice';
+import cartReducer from './cartSlice';
+import filterReducer from './filterSlice';
 import {
   persistReducer,
   FLUSH,
@@ -19,6 +20,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
   cart: cartReducer,
+  filter: filterReducer,
   [productsApi.reducerPath]: productsApi.reducer,
 });
 
