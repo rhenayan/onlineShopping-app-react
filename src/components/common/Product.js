@@ -1,13 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { addToCart } from '../../features/cartSlice';
 import { ButtonStyled } from '../../styles/Button.style';
 import ImageStyled from '../../styles/Image.style';
 
-const Product = ({ products }) => {
-  const cartItems = useSelector(state => state.cart.cartItems);
+const Product = ({ ...product }) => {
+  const {cartItems} = useSelector(state => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleAddToCart = product => {
     dispatch(addToCart(product));
@@ -17,18 +19,23 @@ const Product = ({ products }) => {
     const isInCart = cartItems.some(item => item.id === id);
     return isInCart;
   };
-  const { image, category, title, price, id } = products;
+
+  const { image, category, title, price, id } = product;
+
   return (
     <ProductWrapperStyled>
       <FigureStyled>
-        <ImageStyled src={image} />
+        <ImageStyled src={image} onClick={()=>navigate(`/product/${id}`)}/>
       </FigureStyled>
       <ProductInfoWrapperStyled>
         <CategoryStyled>{category}</CategoryStyled>
         <NameStyled>{title}</NameStyled>
         <ProductFooterStyled>
           <PriceStyled>${price}</PriceStyled>
-          <ButtonStyled disabled = {isInCartToggle(id)} onClick={() => handleAddToCart({image, price, title, id})}>
+          <ButtonStyled
+            disabled={isInCartToggle(id)}
+            onClick={() => handleAddToCart(product)}
+          >
             {isInCartToggle(id) ? 'In Cart' : 'Buy'}
           </ButtonStyled>
         </ProductFooterStyled>

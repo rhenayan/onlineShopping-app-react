@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import ImageStyled from '../../styles/Image.style';
-import dummyimage from '../../DUMMY_IMAGE.jpg';
 
-const Image = () => {
+const Image = ({image}) => {
   return (
     <ImageWrapperStyled>
-      <ImageNewStyled src={dummyimage} />
+      <ImageNewStyled src={image} />
     </ImageWrapperStyled>
   );
 };
