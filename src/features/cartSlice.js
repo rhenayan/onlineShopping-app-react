@@ -11,40 +11,40 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart(state, action) {
-      const updatedCart = { ...action.payload, cartQuantity: 1 };
+    addToCart(state, {payload}) {
+      const updatedCart = { ...payload, cartQuantity: 1 };
       state.cartItems.push(updatedCart);
-      toast.success(`${action.payload.title} added to cart`, {
-        position: 'top-right',
+      toast.success(`${payload.title} added to cart`, {
+        position: 'bottom-right',
       });
     },
-    removeFromCart(state, action) {
+    removeFromCart(state, {payload}) {
       const removedCartItem = state.cartItems.filter(
-        cartItem => cartItem.id !== action.payload.id
+        cartItem => cartItem.id !== payload.id
       );
       state.cartItems = removedCartItem;
-      toast.error(`${action.payload.title} removed from cart`, {
+      toast.error(`${payload.title} removed from cart`, {
         position: 'bottom-left',
       });
     },
-    decreaseQuantity(state, action) {
+    decreaseQuantity(state, {payload}) {
       const itemIndex = state.cartItems.findIndex(
-        cartItem => cartItem.id === action.payload
+        cartItem => cartItem.id === payload
       );
 
       state.cartItems[itemIndex].cartQuantity > 1 &&
         (state.cartItems[itemIndex].cartQuantity -= 1);
     },
-    increaseQuantity(state, action) {
+    increaseQuantity(state, {payload}) {
       const itemIndex = state.cartItems.findIndex(
-        cartItem => cartItem.id === action.payload
+        cartItem => cartItem.id === payload
       );
 
       state.cartItems[itemIndex].cartQuantity >= 1 &&
         (state.cartItems[itemIndex].cartQuantity += 1);
     },
 
-    getTotals(state, action) {
+    getTotals(state) {
       let { total, quantity } = state.cartItems.reduce(
         (cartTotal, cartItem) => {
           const { price, cartQuantity } = cartItem;
@@ -64,7 +64,7 @@ const cartSlice = createSlice({
       state.cartTotalAmount = total;
     },
 
-    clearCart(state, action) {
+    clearCart(state) {
       state.cartItems = [];
       toast.error('Cart cleared', {
         position: 'bottom-left',
